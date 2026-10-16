@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cjrepyde7psfh"]
+
+[ext_resource type="Script" uid="uid://bebh1ttu568h0" path="res://Globals/SoundManager/sound_manager.gd" id="1_4olpy"]
+
+[node name="SoundManager" type="Node2D" unique_id=1742666023 node_paths=PackedStringArray("_bgmplayer")]
+script = ExtResource("1_4olpy")
+_bgmplayer = NodePath("BGM_Player")
+
+[node name="BGM_Player" type="AudioStreamPlayer2D" parent="." unique_id=1359592475]
