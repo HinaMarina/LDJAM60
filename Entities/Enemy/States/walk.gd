@@ -5,7 +5,7 @@ extends EnemyState
 	
 func physics_do(delta):
 	super(delta)
-	core.body.velocity = core.body.velocity.move_toward(Vector2(sign(core.enemy_core.direction_x),0)*max_speed,acceleration*80*delta)
+	core.body.velocity = core.body.velocity.move_toward(Vector2(sign(core.enemy_core.delayed_direction_x),0)*max_speed,acceleration*80*delta)
 	core.body.move_and_slide()
 #
 func do(delta):

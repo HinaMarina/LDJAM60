@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cm68nwjtj46lx" path="res://Entities/Escalator/Escalator3Tiles.tscn" id="12_y2j1k"]
 [ext_resource type="PackedScene" uid="uid://bl2phi6e77mv4" path="res://Entities/Escalator/Escalator14Tiles.tscn" id="13_l5quu"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60uqp"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l5quu"]
 texture = ExtResource("1_k3yno")
 texture_region_size = Vector2i(32, 32)
 0:0/animation_columns = 8
@@ -31,7 +31,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_dp45b"]
 tile_size = Vector2i(32, 32)
-sources/2 = SubResource("TileSetAtlasSource_60uqp")
+sources/2 = SubResource("TileSetAtlasSource_l5quu")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dp45b"]
 size = Vector2(497, 20)
@@ -39,7 +39,7 @@ size = Vector2(497, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w85am"]
 size = Vector2(11, 355)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dp45b"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdibx"]
 texture = ExtResource("2_60uqp")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.9355869, -0.018260479, 8, 0, 8, -8, -1.9409485, -8)
@@ -48,7 +48,7 @@ texture = ExtResource("2_60uqp")
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.06469822, 1.973299, -0.06469822, 2.0379982, -8, -8, -8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6l1gu"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mqljc"]
 texture = ExtResource("5_cofkg")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.0408344, -2.0086281, -1.0028229, 5.8875475, 8, 5.855198, 8, -2.0379972)
@@ -60,8 +60,8 @@ texture = ExtResource("5_cofkg")
 [sub_resource type="TileSet" id="TileSet_w85am"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 193
-sources/0 = SubResource("TileSetAtlasSource_dp45b")
-sources/1 = SubResource("TileSetAtlasSource_6l1gu")
+sources/0 = SubResource("TileSetAtlasSource_kdibx")
+sources/1 = SubResource("TileSetAtlasSource_mqljc")
 
 [node name="PrototypeLevel" type="Node2D" unique_id=428215666 node_paths=PackedStringArray("Player_Layer", "Enemy_Layer", "Level_Elevator")]
 script = ExtResource("1_w1jcv")

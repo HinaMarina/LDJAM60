@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwh3j6nakmy6r" path="res://Globals/PlayerStatsManager/player_stats_manager.gd" id="1_e3qdl"]
 [ext_resource type="PackedScene" uid="uid://bkl7hb8ajc8jl" path="res://Entities/Player/player_node.tscn" id="2_u28s6"]
+[ext_resource type="PackedScene" uid="uid://bckfkyfp4ju4m" path="res://Entities/VHS_Tape/vhs_tape.tscn" id="2_xkjh7"]
 [ext_resource type="Texture2D" uid="uid://60630qpa7bgg" path="res://Miscellaneous/Level_assets/BG Levels.png" id="3_k3yt6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k3yt6"]
@@ -18,6 +19,7 @@ font_color = Color(1, 0, 0, 1)
 
 [node name="PlayerStatsManager" type="Node2D" unique_id=134053491 node_paths=PackedStringArray("credit_label", "points_label")]
 script = ExtResource("1_e3qdl")
+vhs_tape_scene = ExtResource("2_xkjh7")
 PlayerScene = ExtResource("2_u28s6")
 credit_label = NodePath("CanvasLayer/Credits_number")
 points_label = NodePath("CanvasLayer/Points")

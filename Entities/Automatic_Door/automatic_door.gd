@@ -3,6 +3,8 @@ class_name AutomaticDoor extends Node2D
 @export var animator:AnimatedSprite2D
 
 @export var Spawn_Anchor:Node2D
+
+@export var Level_Enemy_Amount:=1
 var current_scene:SceneLevel
 
 func _ready():
@@ -17,6 +19,6 @@ func spawn_enemy():
 
 
 func _on_timer_timeout() -> void:
-	if EnemyManager.enemy_amount>=1:
+	if EnemyManager.enemy_amount>=Level_Enemy_Amount:
 		return
 	spawn_enemy()

@@ -442,12 +442,16 @@ script = ExtResource("1_fcg00")
 position = Vector2(0.5, -12.5)
 shape = SubResource("RectangleShape2D_m2t2i")
 
-[node name="EnemyCore" type="Node" parent="CharacterBody2D" unique_id=182617408 node_paths=PackedStringArray("Enemy_Search", "Walk", "AirControl", "Death", "body", "animator", "enemy_core")]
+[node name="EnemyCore" type="Node" parent="CharacterBody2D" unique_id=182617408 node_paths=PackedStringArray("Enemy_Search", "Walk", "AirControl", "Death", "SearchTimer", "JumpDelayer", "JumpDirector1", "JumpDirector2", "body", "animator", "enemy_core")]
 script = ExtResource("1_bgbm4")
 Enemy_Search = NodePath("Enemy_Search")
 Walk = NodePath("Walk")
 AirControl = NodePath("Air_Control")
 Death = NodePath("Death")
+SearchTimer = NodePath("../../EnemySearchTimer")
+JumpDelayer = NodePath("JumpDelayer")
+JumpDirector1 = NodePath("../JumpDirector1")
+JumpDirector2 = NodePath("../JumpDirector2")
 body = NodePath("..")
 animator = NodePath("../AnimationPlayer")
 enemy_core = NodePath(".")
@@ -476,6 +480,16 @@ fall_time = 0.4
 
 [node name="Death" type="Node" parent="CharacterBody2D/EnemyCore" unique_id=324567600]
 script = ExtResource("10_r7nea")
+
+[node name="JumpDelayer" type="Timer" parent="CharacterBody2D/EnemyCore" unique_id=61714101]
+wait_time = 2.0
+
+[node name="DirectionDelayer" type="Timer" parent="CharacterBody2D/EnemyCore" unique_id=412183696]
+wait_time = 0.2
+autostart = true
+
+[node name="GetDown_Raycast" type="RayCast2D" parent="CharacterBody2D/EnemyCore" unique_id=679424489]
+target_position = Vector2(16, 8)
 
 [node name="Sprites" type="Node2D" parent="CharacterBody2D" unique_id=1036477506]
 
@@ -508,5 +522,17 @@ position = Vector2(0, -14)
 texture = ExtResource("14_oe1wn")
 hframes = 6
 
+[node name="JumpDirector2" type="RayCast2D" parent="CharacterBody2D" unique_id=815394675]
+target_position = Vector2(48, -48)
+
+[node name="JumpDirector1" type="RayCast2D" parent="CharacterBody2D" unique_id=2097033985]
+target_position = Vector2(12, -48)
+
+[node name="EnemySearchTimer" type="Timer" parent="." unique_id=1189106782]
+wait_time = 6.0
+
 [connection signal="animation_finished" from="CharacterBody2D/AnimationPlayer" to="CharacterBody2D/AnimationPlayer" method="_on_animation_finished"]
 [connection signal="animation_started" from="CharacterBody2D/AnimationPlayer" to="CharacterBody2D/AnimationPlayer" method="_on_animation_started"]
+[connection signal="timeout" from="CharacterBody2D/EnemyCore/JumpDelayer" to="CharacterBody2D/EnemyCore" method="_on_jump_delayer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/EnemyCore/DirectionDelayer" to="CharacterBody2D/EnemyCore" method="_on_direction_delayer_timeout"]
+[connection signal="timeout" from="EnemySearchTimer" to="CharacterBody2D/EnemyCore" method="_on_timer_timeout"]

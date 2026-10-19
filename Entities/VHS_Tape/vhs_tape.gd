@@ -7,9 +7,10 @@ var playerbody : PlayerBody
 var body_to_follow:Node2D
 @export var Area:Area2D
 var Tape_Kind:Array[String]
+var is_following:bool=false
 
 func _ready() -> void:
-	initial_position = global_position
+	initial_position = self.global_position
 	var number= randi_range(0,3)
 	Tape_Kind.append("Black")
 	Tape_Kind.append("Brown")
@@ -20,6 +21,7 @@ func _ready() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is PlayerBody:
+		is_following = true
 		playerbody = body
 		if !playerbody.current_tapes.is_empty():
 			body_to_follow = playerbody.current_tapes[-1]
@@ -28,10 +30,19 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			body_to_follow = body
 		playerbody.add_tape(self)
 		Area.set_deferred('monitoring',false)
-		
 
+func monitoring():
+	Area.set_deferred('monitoring',true)
+
+
+func stop_following():
+	is_following = false
+	body_to_follow = null
+	
 
 func _process(delta: float) -> void:
+	if !is_following:
+		self.global_position = initial_position
 	if body_to_follow != null:
 		var direction = playerbody.maincore.last_xInput
 		var multiplier:float

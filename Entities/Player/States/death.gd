@@ -2,6 +2,7 @@ extends PlayerState
 
 
 func enter():
+	PlayerStatsManager.player_died.emit(core.player_core.body.current_tapes)
 	if core.player_core.xInput>=0:
 		core.player_core.animator.play("Death_Fall_E")
 	else:
