@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 func _on_animation_started(anim_name: StringName) -> void:
-	print(anim_name + ' started')
+	#print(anim_name + ' started')
 	var animation = get_animation(anim_name)
 	var path = animation.track_get_path(0)
 	var sprite = animator_root.get_node(path) as Sprite2D

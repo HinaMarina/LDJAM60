@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://8h1u6bytphb4"]
+
+[ext_resource type="Script" uid="uid://bj3aeofr75mcl" path="res://Entities/Escalator/escalator.gd" id="1_1wghf"]
+[ext_resource type="Texture2D" uid="uid://0su333v17tqg" path="res://Entities/Escalator/Sprites/4Tiles.png" id="2_qm6a8"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pn4c2"]
+a = Vector2(20, -22)
+b = Vector2(-31, 28)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_r70un"]
+a = Vector2(-11, 17)
+b = Vector2(-23, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xv5fx"]
+size = Vector2(74.54996, 15.931931)
+
+[node name="Escalator_4Tiles" type="Node2D" unique_id=481596281]
+script = ExtResource("1_1wghf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1097501232]
+position = Vector2(1, -1)
+texture = ExtResource("2_qm6a8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=696964388]
+position = Vector2(1, -1)
+collision_mask = 193
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1658743877]
+position = Vector2(0, -4)
+shape = SubResource("SegmentShape2D_pn4c2")
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=453805626]
+position = Vector2(42, -43)
+shape = SubResource("SegmentShape2D_r70un")
+one_way_collision = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1715366253]
+polygon = PackedVector2Array(-32, 27, 21, -25, 32, -24, 32, -16, 23, -16, -22, 29, -32, 29)
+
+[node name="Drag_Area" type="Area2D" parent="." unique_id=19136155]
+position = Vector2(1, -1)
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drag_Area" unique_id=46581468]
+position = Vector2(-0.6426326, -4.3190665)
+rotation = -0.7853982
+shape = SubResource("RectangleShape2D_xv5fx")
+
+[connection signal="body_entered" from="Drag_Area" to="." method="_on_drag_area_body_entered"]
+[connection signal="body_exited" from="Drag_Area" to="." method="_on_drag_area_body_exited"]

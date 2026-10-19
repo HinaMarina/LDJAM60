@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cm68nwjtj46lx"]
+
+[ext_resource type="Texture2D" uid="uid://11xriavc0hue" path="res://Entities/Escalator/Sprites/3Tiles.png" id="1_dpr86"]
+[ext_resource type="Script" uid="uid://bj3aeofr75mcl" path="res://Entities/Escalator/escalator.gd" id="1_jfymb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfymb"]
+size = Vector2(50.201237, 16)
+
+[node name="Escalator_3Tiles" type="Node2D" unique_id=1064619433]
+script = ExtResource("1_jfymb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=863943177]
+texture = ExtResource("1_dpr86")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=292073868]
+collision_mask = 193
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1627907083]
+polygon = PackedVector2Array(-23, 15, 11, -19, 24, -18, 24, -8, 11, -8, -16, 20, -23, 20)
+
+[node name="Drag_Area" type="Area2D" parent="." unique_id=414474053]
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drag_Area" unique_id=1786734938]
+position = Vector2(-0.1870234, -4.69951)
+rotation = -0.7853982
+shape = SubResource("RectangleShape2D_jfymb")
+
+[connection signal="body_entered" from="Drag_Area" to="." method="_on_drag_area_body_entered"]
+[connection signal="body_exited" from="Drag_Area" to="." method="_on_drag_area_body_exited"]

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://disohlmh4hk2s"]
+
+[ext_resource type="Script" uid="uid://bj3aeofr75mcl" path="res://Entities/Escalator/escalator.gd" id="1_lo5mt"]
+[ext_resource type="Texture2D" uid="uid://ctppjqvcpxhpd" path="res://Entities/Escalator/Sprites/7Tiles.png" id="2_t8fdt"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lo5mt"]
+a = Vector2(44, -46)
+b = Vector2(-55, 53)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_t8fdt"]
+a = Vector2(-11, 17)
+b = Vector2(-23, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7e3xo"]
+size = Vector2(139.34155, 15.931931)
+
+[node name="Escalator7Tiles" type="Node2D" unique_id=1174734062]
+script = ExtResource("1_lo5mt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1365135617]
+texture = ExtResource("2_t8fdt")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=785052668]
+collision_mask = 193
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1835713651]
+position = Vector2(0, -4)
+shape = SubResource("SegmentShape2D_lo5mt")
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=431495418]
+position = Vector2(66, -67)
+shape = SubResource("SegmentShape2D_t8fdt")
+one_way_collision = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1826929920]
+polygon = PackedVector2Array(-56, 52, 45, -49, 55, -49, 55, -40, 47, -40, -49, 55)
+
+[node name="Drag_Area" type="Area2D" parent="." unique_id=294510754]
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drag_Area" unique_id=269120278]
+position = Vector2(-0.20368147, -4.6838946)
+rotation = -0.7853982
+shape = SubResource("RectangleShape2D_7e3xo")
+
+[connection signal="body_entered" from="Drag_Area" to="." method="_on_drag_area_body_entered"]
+[connection signal="body_exited" from="Drag_Area" to="." method="_on_drag_area_body_exited"]

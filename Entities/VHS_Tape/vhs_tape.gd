@@ -15,7 +15,7 @@ func _ready() -> void:
 	Tape_Kind.append("Brown")
 	Tape_Kind.append("Green")
 	Tape_Kind.append("Pink")
-	print(Tape_Kind[number])
+	#print(Tape_Kind[number])
 	animation.play(Tape_Kind[number])
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

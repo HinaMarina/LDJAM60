@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bl2phi6e77mv4"]
+
+[ext_resource type="Texture2D" uid="uid://b66kiwlit4b2f" path="res://Entities/Escalator/Sprites/14Tiles.png" id="1_nr3co"]
+[ext_resource type="Script" uid="uid://bj3aeofr75mcl" path="res://Entities/Escalator/escalator.gd" id="1_yhcsq"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yhcsq"]
+a = Vector2(100, -102)
+b = Vector2(-111, 109)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kx86q"]
+a = Vector2(-11, 17)
+b = Vector2(-23, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ty0"]
+size = Vector2(299.1062, 15.931931)
+
+[node name="Escalator14Tiles" type="Node2D" unique_id=1600481698]
+script = ExtResource("1_yhcsq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1776203819]
+texture = ExtResource("1_nr3co")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=304987500]
+collision_mask = 193
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2060021681]
+position = Vector2(0, -4)
+shape = SubResource("SegmentShape2D_yhcsq")
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1441889530]
+position = Vector2(122.4, -123)
+shape = SubResource("SegmentShape2D_kx86q")
+one_way_collision = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=453504387]
+position = Vector2(32.4, -32)
+polygon = PackedVector2Array(-77, 73, -144.4, 140, -137.4, 142, -71.4, 77, 71, -65, 78, -65, 78, -72, 68, -72)
+
+[node name="Drag_Area" type="Area2D" parent="." unique_id=1912689986]
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drag_Area" unique_id=1918918606]
+position = Vector2(-0.72203636, -4.2220383)
+rotation = -0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_v1ty0")
+
+[connection signal="body_entered" from="Drag_Area" to="." method="_on_drag_area_body_entered"]
+[connection signal="body_exited" from="Drag_Area" to="." method="_on_drag_area_body_exited"]

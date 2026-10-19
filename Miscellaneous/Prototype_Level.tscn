@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://djxtiq58imcfn" path="res://Entities/CRTs/CRT.tscn" id="9_7y67o"]
 [ext_resource type="PackedScene" uid="uid://efpyg5a76ygi" path="res://Entities/Elevator/Elevator.tscn" id="10_w1jcv"]
 [ext_resource type="PackedScene" uid="uid://dv0kpg0vprpew" path="res://Entities/Automatic_Door/Automatic_Door.tscn" id="11_trvmt"]
+[ext_resource type="PackedScene" uid="uid://cm68nwjtj46lx" path="res://Entities/Escalator/Escalator3Tiles.tscn" id="12_y2j1k"]
+[ext_resource type="PackedScene" uid="uid://bl2phi6e77mv4" path="res://Entities/Escalator/Escalator14Tiles.tscn" id="13_l5quu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60uqp"]
 texture = ExtResource("1_k3yno")
@@ -146,8 +148,14 @@ position = Vector2(-163, 156)
 Current_Scene = NodePath("..")
 
 [node name="AutomaticDoor" parent="." unique_id=389419091 instance=ExtResource("11_trvmt")]
-position = Vector2(62, 54)
+position = Vector2(51, 54)
 
 [node name="Enemy_Layer" type="Node2D" parent="." unique_id=478463521]
 
 [node name="Player_layer" type="Node2D" parent="." unique_id=306675713]
+
+[node name="Escalator" parent="." unique_id=1064619433 instance=ExtResource("12_y2j1k")]
+position = Vector2(113, 100)
+
+[node name="Escalator14Tiles" parent="." unique_id=1600481698 instance=ExtResource("13_l5quu")]
+position = Vector2(-7, 43)
