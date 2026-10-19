@@ -2,7 +2,53 @@
 
 [ext_resource type="Script" uid="uid://dwh3j6nakmy6r" path="res://Globals/PlayerStatsManager/player_stats_manager.gd" id="1_e3qdl"]
 [ext_resource type="PackedScene" uid="uid://bkl7hb8ajc8jl" path="res://Entities/Player/player_node.tscn" id="2_u28s6"]
+[ext_resource type="Texture2D" uid="uid://60630qpa7bgg" path="res://Miscellaneous/Level_assets/BG Levels.png" id="3_k3yt6"]
 
-[node name="PlayerStatsManager" type="Node2D" unique_id=134053491]
+[sub_resource type="LabelSettings" id="LabelSettings_k3yt6"]
+font_size = 12
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xkjh7"]
+font_size = 12
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bh4i8"]
+font_size = 10
+font_color = Color(1, 0, 0, 1)
+
+[node name="PlayerStatsManager" type="Node2D" unique_id=134053491 node_paths=PackedStringArray("credit_label", "points_label")]
 script = ExtResource("1_e3qdl")
 PlayerScene = ExtResource("2_u28s6")
+credit_label = NodePath("CanvasLayer/Credits_number")
+points_label = NodePath("CanvasLayer/Points")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1768854056]
+
+[node name="Credits" type="Label" parent="CanvasLayer" unique_id=1906385669]
+offset_left = 300.0
+offset_top = 342.0
+offset_right = 357.0
+offset_bottom = 365.0
+text = "credits "
+label_settings = SubResource("LabelSettings_k3yt6")
+
+[node name="Credits_number" type="Label" parent="CanvasLayer" unique_id=1439166571]
+offset_left = 290.0
+offset_top = 343.0
+offset_right = 330.0
+offset_bottom = 366.0
+text = "0"
+label_settings = SubResource("LabelSettings_xkjh7")
+
+[node name="Points" type="Label" parent="CanvasLayer" unique_id=509584034]
+offset_left = 482.0
+offset_right = 556.0
+offset_bottom = 23.0
+text = "99999999"
+label_settings = SubResource("LabelSettings_bh4i8")
+horizontal_alignment = 2
+
+[node name="BG" type="Sprite2D" parent="." unique_id=86079461]
+visible = false
+position = Vector2(320, 180)
+texture = ExtResource("3_k3yt6")

@@ -2,6 +2,7 @@ class_name SceneLevel extends Node2D
 
 
 @export var Player_Layer:Node2D
+@export var Enemy_Layer:Node2D
 @export var Level_Elevator:Elevator
 
 var Current_Player:PlayerNode
@@ -18,6 +19,8 @@ func remove_player():
 func start_player():
 	if PlayerStatsManager.Credits > 0:
 		if Current_Player == null:
+			if Level_Elevator.Spawn_sprite.visible == true:
+				return
 			PlayerStatsManager.use_credit()
 			Level_Elevator.spawn()
 	else:

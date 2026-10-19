@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://dv0kpg0vprpew"]
+
+[ext_resource type="Texture2D" uid="uid://doc4db4836ssv" path="res://Entities/Automatic_Door/Automatic_Door_IDLE.png" id="1_4qbu5"]
+[ext_resource type="Script" uid="uid://b8wp26b602ylv" path="res://Entities/Automatic_Door/automatic_door.gd" id="1_8tlm1"]
+[ext_resource type="Texture2D" uid="uid://dmtrc1ljln6ha" path="res://Entities/Automatic_Door/Automatic_Door_Opening.png" id="1_m32ir"]
+[ext_resource type="Texture2D" uid="uid://duowafbraeppj" path="res://Entities/Automatic_Door/Automatic_Door_Spawn.png" id="2_jhil5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlt4i"]
+atlas = ExtResource("1_m32ir")
+region = Rect2(234, 0, 78, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7yny"]
+atlas = ExtResource("1_m32ir")
+region = Rect2(156, 0, 78, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd4oa"]
+atlas = ExtResource("1_m32ir")
+region = Rect2(78, 0, 78, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmqym"]
+atlas = ExtResource("1_m32ir")
+region = Rect2(0, 0, 78, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qbu5"]
+atlas = ExtResource("1_4qbu5")
+region = Rect2(0, 0, 78, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m32ir"]
+atlas = ExtResource("2_jhil5")
+region = Rect2(0, 0, 78, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tlm1"]
+atlas = ExtResource("2_jhil5")
+region = Rect2(78, 0, 78, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxegy"]
+atlas = ExtResource("2_jhil5")
+region = Rect2(156, 0, 78, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1bpg"]
+atlas = ExtResource("2_jhil5")
+region = Rect2(234, 0, 78, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el20t"]
+atlas = ExtResource("2_jhil5")
+region = Rect2(312, 0, 78, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfh7h"]
+atlas = ExtResource("2_jhil5")
+region = Rect2(390, 0, 78, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgbx0"]
+atlas = ExtResource("2_jhil5")
+region = Rect2(468, 0, 78, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n22qf"]
+atlas = ExtResource("2_jhil5")
+region = Rect2(546, 0, 78, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m32ir"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlt4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7yny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd4oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmqym")
+}],
+"loop": false,
+"name": &"Close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qbu5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m32ir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tlm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxegy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1bpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el20t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfh7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgbx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n22qf")
+}],
+"loop": false,
+"name": &"Spawn",
+"speed": 5.0
+}]
+
+[node name="AutomaticDoor" type="Node2D" unique_id=389419091 node_paths=PackedStringArray("animator", "Spawn_Anchor")]
+script = ExtResource("1_8tlm1")
+animator = NodePath("AnimatedSprite2D")
+Spawn_Anchor = NodePath("Spawn_Anchor")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1931871307]
+position = Vector2(0, -26)
+sprite_frames = SubResource("SpriteFrames_m32ir")
+animation = &"Spawn"
+autoplay = "Idle"
+frame = 7
+frame_progress = 1.0
+
+[node name="Spawn_Anchor" type="Node2D" parent="." unique_id=1742888892]
+position = Vector2(1, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=535626603]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

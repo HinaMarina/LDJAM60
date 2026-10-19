@@ -1,0 +1,512 @@
+[gd_scene format=3 uid="uid://cqsac4qv746ov"]
+
+[ext_resource type="Script" uid="uid://clyaj8ftcblgs" path="res://Entities/Enemy/enemy_core.gd" id="1_bgbm4"]
+[ext_resource type="Script" uid="uid://bvqnxqgiseg8a" path="res://Entities/Enemy/EnemyAnimator.gd" id="1_fcg00"]
+[ext_resource type="Texture2D" uid="uid://d1nuhhpb18or0" path="res://Entities/Enemy/Sprites/Idle.png" id="1_m2t2i"]
+[ext_resource type="Script" uid="uid://vd60u30mylp5" path="res://Entities/Enemy/enemynode.gd" id="1_y11p7"]
+[ext_resource type="Script" uid="uid://b03cll4ctqjg" path="res://Entities/Enemy/States/enemy_search.gd" id="2_3l5gm"]
+[ext_resource type="Texture2D" uid="uid://ceui5dokt0ih" path="res://Entities/Enemy/Sprites/WalkCycle.png" id="2_7s3rp"]
+[ext_resource type="Script" uid="uid://lqt13tssamd5" path="res://Entities/Enemy/EnemyBody.gd" id="2_bycej"]
+[ext_resource type="Texture2D" uid="uid://bu4lprwimeqax" path="res://Entities/Enemy/Sprites/Jump.png" id="3_bgbm4"]
+[ext_resource type="Texture2D" uid="uid://b4tut75eandom" path="res://Entities/Enemy/Sprites/Enemy_Search.png" id="4_3l5gm"]
+[ext_resource type="Script" uid="uid://bgfpee0ve0meg" path="res://Entities/Enemy/States/walk.gd" id="6_a077d"]
+[ext_resource type="Script" uid="uid://cgryygmn84ugm" path="res://Entities/Enemy/States/air_control.gd" id="7_u8o2d"]
+[ext_resource type="Script" uid="uid://bfu12e3dv36e7" path="res://Entities/Enemy/States/jump.gd" id="8_0p0qh"]
+[ext_resource type="Script" uid="uid://dpr5mbeufyfgb" path="res://Entities/Enemy/States/fall.gd" id="9_k11i2"]
+[ext_resource type="Script" uid="uid://dfgu7lly55fvh" path="res://Entities/Enemy/States/death.gd" id="10_r7nea"]
+[ext_resource type="Texture2D" uid="uid://c0mqy2oi8anp5" path="res://Entities/Enemy/Sprites/Enemy_Death.png" id="14_oe1wn"]
+
+[sub_resource type="Animation" id="Animation_r7nea"]
+resource_name = "Death"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprites/Animations/Death:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Sprites/Animations/Death:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_fcg00"]
+resource_name = "EnemySearch"
+loop_mode = 2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprites/Animations/Enemy_Search:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_k11i2"]
+resource_name = "Fall_E"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprites/Animations/Jump:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Sprites/Animations/Jump:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_oe1wn"]
+resource_name = "Fall_W"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprites/Animations/Jump:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Sprites/Animations/Jump:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3l5gm"]
+resource_name = "Idle_E"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprites/Animations/Idle:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Sprites/Animations/Idle:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_u8o2d"]
+resource_name = "Idle_W"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprites/Animations/Idle:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Sprites/Animations/Idle:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_y11p7"]
+resource_name = "Jump_E"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprites/Animations/Jump:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Sprites/Animations/Jump:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bycej"]
+resource_name = "Jump_W"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprites/Animations/Jump:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Sprites/Animations/Jump:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_a077d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprites/Animations/Enemy_Search:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Sprites/Animations/Jump:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterBody2D/Sprites/Animations/Jump:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterBody2D/Sprites/Animations/Walk:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterBody2D/Sprites/Animations/Walk:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CharacterBody2D/Sprites/Animations/Idle:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CharacterBody2D/Sprites/Animations/Idle:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CharacterBody2D/Sprites/Animations/Death:flip_h")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CharacterBody2D/Sprites/Animations/Death:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7s3rp"]
+resource_name = "Walk_E"
+length = 0.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprites/Animations/Walk:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Sprites/Animations/Walk:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_bgbm4"]
+resource_name = "Walk_W"
+length = 0.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprites/Animations/Walk:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Sprites/Animations/Walk:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u8o2d"]
+_data = {
+&"Death": SubResource("Animation_r7nea"),
+&"EnemySearch": SubResource("Animation_fcg00"),
+&"Fall_E": SubResource("Animation_k11i2"),
+&"Fall_W": SubResource("Animation_oe1wn"),
+&"Idle_E": SubResource("Animation_3l5gm"),
+&"Idle_W": SubResource("Animation_u8o2d"),
+&"Jump_E": SubResource("Animation_y11p7"),
+&"Jump_W": SubResource("Animation_bycej"),
+&"RESET": SubResource("Animation_a077d"),
+&"Walk_E": SubResource("Animation_7s3rp"),
+&"Walk_W": SubResource("Animation_bgbm4")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2t2i"]
+size = Vector2(11, 25)
+
+[node name="Enemy" type="Node2D" unique_id=730408465]
+script = ExtResource("1_y11p7")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1453003840 node_paths=PackedStringArray("enemycore")]
+collision_layer = 64
+script = ExtResource("2_bycej")
+enemycore = NodePath("EnemyCore")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D" unique_id=899624286]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_u8o2d")
+script = ExtResource("1_fcg00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=241453417]
+position = Vector2(0.5, -12.5)
+shape = SubResource("RectangleShape2D_m2t2i")
+
+[node name="EnemyCore" type="Node" parent="CharacterBody2D" unique_id=182617408 node_paths=PackedStringArray("Enemy_Search", "Walk", "AirControl", "Death", "body", "animator", "enemy_core")]
+script = ExtResource("1_bgbm4")
+Enemy_Search = NodePath("Enemy_Search")
+Walk = NodePath("Walk")
+AirControl = NodePath("Air_Control")
+Death = NodePath("Death")
+body = NodePath("..")
+animator = NodePath("../AnimationPlayer")
+enemy_core = NodePath(".")
+
+[node name="Enemy_Search" type="Node" parent="CharacterBody2D/EnemyCore" unique_id=392333863]
+script = ExtResource("2_3l5gm")
+
+[node name="Walk" type="Node" parent="CharacterBody2D/EnemyCore" unique_id=1628872238]
+script = ExtResource("6_a077d")
+acceleration = 5.0
+
+[node name="Air_Control" type="Node" parent="CharacterBody2D/EnemyCore" unique_id=1304545739 node_paths=PackedStringArray("Jump", "Fall")]
+script = ExtResource("7_u8o2d")
+Jump = NodePath("Jump")
+Fall = NodePath("Fall")
+
+[node name="Jump" type="Node" parent="CharacterBody2D/EnemyCore/Air_Control" unique_id=889164492]
+script = ExtResource("8_0p0qh")
+jump_height = 62.0
+peak_time = 0.4
+
+[node name="Fall" type="Node" parent="CharacterBody2D/EnemyCore/Air_Control" unique_id=551011136]
+script = ExtResource("9_k11i2")
+jump_height = 42.0
+fall_time = 0.4
+
+[node name="Death" type="Node" parent="CharacterBody2D/EnemyCore" unique_id=324567600]
+script = ExtResource("10_r7nea")
+
+[node name="Sprites" type="Node2D" parent="CharacterBody2D" unique_id=1036477506]
+
+[node name="Animations" type="Node2D" parent="CharacterBody2D/Sprites" unique_id=1173302167]
+
+[node name="Idle" type="Sprite2D" parent="CharacterBody2D/Sprites/Animations" unique_id=805342259]
+visible = false
+position = Vector2(0, -14)
+texture = ExtResource("1_m2t2i")
+
+[node name="Walk" type="Sprite2D" parent="CharacterBody2D/Sprites/Animations" unique_id=1644552571]
+visible = false
+position = Vector2(0, -14)
+texture = ExtResource("2_7s3rp")
+hframes = 7
+
+[node name="Jump" type="Sprite2D" parent="CharacterBody2D/Sprites/Animations" unique_id=874406594]
+visible = false
+position = Vector2(0, -14)
+texture = ExtResource("3_bgbm4")
+
+[node name="Enemy_Search" type="Sprite2D" parent="CharacterBody2D/Sprites/Animations" unique_id=1611221499]
+visible = false
+position = Vector2(0, -14)
+texture = ExtResource("4_3l5gm")
+hframes = 5
+
+[node name="Death" type="Sprite2D" parent="CharacterBody2D/Sprites/Animations" unique_id=924174431]
+position = Vector2(0, -14)
+texture = ExtResource("14_oe1wn")
+hframes = 6
+
+[connection signal="animation_finished" from="CharacterBody2D/AnimationPlayer" to="CharacterBody2D/AnimationPlayer" method="_on_animation_finished"]
+[connection signal="animation_started" from="CharacterBody2D/AnimationPlayer" to="CharacterBody2D/AnimationPlayer" method="_on_animation_started"]

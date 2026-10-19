@@ -52,3 +52,9 @@ func sets_animation():
 	else:
 		state_sprite.flip_h = true
 		core.animator.play("Warrior_Cycle_W")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is EnemyBody:
+		if self.is_active():
+			body.enemycore.die()

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bckfkyfp4ju4m" path="res://Entities/VHS_Tape/vhs_tape.tscn" id="8_6l1gu"]
 [ext_resource type="PackedScene" uid="uid://djxtiq58imcfn" path="res://Entities/CRTs/CRT.tscn" id="9_7y67o"]
 [ext_resource type="PackedScene" uid="uid://efpyg5a76ygi" path="res://Entities/Elevator/Elevator.tscn" id="10_w1jcv"]
+[ext_resource type="PackedScene" uid="uid://dv0kpg0vprpew" path="res://Entities/Automatic_Door/Automatic_Door.tscn" id="11_trvmt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60uqp"]
 texture = ExtResource("1_k3yno")
@@ -60,9 +61,10 @@ physics_layer_0/collision_mask = 193
 sources/0 = SubResource("TileSetAtlasSource_dp45b")
 sources/1 = SubResource("TileSetAtlasSource_6l1gu")
 
-[node name="PrototypeLevel" type="Node2D" unique_id=428215666 node_paths=PackedStringArray("Player_Layer", "Level_Elevator")]
+[node name="PrototypeLevel" type="Node2D" unique_id=428215666 node_paths=PackedStringArray("Player_Layer", "Enemy_Layer", "Level_Elevator")]
 script = ExtResource("1_w1jcv")
 Player_Layer = NodePath("Player_layer")
+Enemy_Layer = NodePath("Enemy_Layer")
 Level_Elevator = NodePath("Elevator")
 
 [node name="MovingBG" type="TileMapLayer" parent="." unique_id=1882356576]
@@ -142,5 +144,10 @@ position = Vector2(118, 17)
 [node name="Elevator" parent="." unique_id=530605117 node_paths=PackedStringArray("Current_Scene") instance=ExtResource("10_w1jcv")]
 position = Vector2(-163, 156)
 Current_Scene = NodePath("..")
+
+[node name="AutomaticDoor" parent="." unique_id=389419091 instance=ExtResource("11_trvmt")]
+position = Vector2(62, 54)
+
+[node name="Enemy_Layer" type="Node2D" parent="." unique_id=478463521]
 
 [node name="Player_layer" type="Node2D" parent="." unique_id=306675713]

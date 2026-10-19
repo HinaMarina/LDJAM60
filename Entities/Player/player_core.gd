@@ -1,6 +1,4 @@
 class_name PlayerCore extends PlayerStateCore
-var is_holding_girl:bool = false
-var current_girl_being_hold:String
 
 @onready var main_machine:PlayerStateMachine
 
@@ -9,7 +7,7 @@ var current_girl_being_hold:String
 @export var Air_Control:PlayerState
 
 @export var Warrior:PlayerState
-
+@export var Death:PlayerState
 
 var can_player_move:bool= true
 
@@ -113,3 +111,10 @@ func release_movement():
 	
 func on_arcade_stick_catched():
 	main_machine.set_state(Warrior)
+
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	if Warrior.is_active():
+		return
+	if body is EnemyBody:
+		main_machine.set_state(Death)

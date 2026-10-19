@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 SoundManager="*uid://cjrepyde7psfh"
 SceneManager="*uid://c8uljh8d56ykl"
 PlayerStatsManager="*uid://bd23ft3rjocfk"
+EnemyManager="*uid://b7ehos2b2wy3o"
 
 [display]
 
@@ -74,6 +75,7 @@ insert_credit={
 [layer_names]
 
 2d_physics/layer_1="Floor"
+2d_physics/layer_2="CRTs"
 2d_physics/layer_6="Collectibles"
 2d_physics/layer_7="Enemy"
 2d_physics/layer_8="Player"

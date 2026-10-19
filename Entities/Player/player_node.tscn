@@ -16,14 +16,133 @@
 [ext_resource type="Texture2D" uid="uid://dndiswqsoekh0" path="res://Entities/Player/Warrior/Warrior_cycle.png" id="7_bmpak"]
 [ext_resource type="Script" uid="uid://bcli1rd13bocl" path="res://Entities/Player/States/jump.gd" id="7_sscqg"]
 [ext_resource type="Script" uid="uid://d4e8d02tjsuuf" path="res://Entities/Player/States/fall.gd" id="8_stti4"]
+[ext_resource type="Texture2D" uid="uid://cw03histf4irj" path="res://Entities/Player/Death/Death_Fall.png" id="10_snbqk"]
+[ext_resource type="Texture2D" uid="uid://8by4iyg21mum" path="res://Entities/Player/Death/Death_Cry.png" id="11_461gy"]
 [ext_resource type="Script" uid="uid://d1h5eyf4rm7vr" path="res://Entities/Player/States/warrior.gd" id="13_h05wd"]
 [ext_resource type="Script" uid="uid://cg4vxwhw072dc" path="res://Entities/Player/States/Warrior_transformation.gd" id="16_xjtmg"]
 [ext_resource type="Script" uid="uid://ylouxec16nti" path="res://Entities/Player/Warrior_cycle.gd" id="17_ij3by"]
+[ext_resource type="Script" uid="uid://de7phafjwcrtq" path="res://Entities/Player/States/death.gd" id="17_jwyds"]
 [ext_resource type="Script" uid="uid://b2i1xpkcv3bsb" path="res://Entities/Player/States/Warrior_ground_control.gd" id="18_y0x77"]
 [ext_resource type="Script" uid="uid://dufl4cj4x31q3" path="res://Entities/Player/States/Warrior_run.gd" id="19_04igh"]
 [ext_resource type="Script" uid="uid://cdh76plvxoj08" path="res://Entities/Player/States/Warrior_air_control.gd" id="20_fcw7a"]
 [ext_resource type="Script" uid="uid://stf78xf4ttfi" path="res://Entities/Player/States/Warrior_jump.gd" id="21_pa6vk"]
 [ext_resource type="Script" uid="uid://dihabtigg7scx" path="res://Entities/Player/States/Warrior_fall.gd" id="22_j8sk5"]
+
+[sub_resource type="Animation" id="Animation_rghsh"]
+resource_name = "Death_Cry_E"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Animations/Death_Cry:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Animations/Death_Cry:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_pn0fr"]
+resource_name = "Death_Cry_W"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Animations/Death_Cry:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Animations/Death_Cry:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_snbqk"]
+resource_name = "Death_Fall_E"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Animations/Death_Fall:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Animations/Death_Fall:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_461gy"]
+resource_name = "Death_Fall_W"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Animations/Death_Fall:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Animations/Death_Fall:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
 [sub_resource type="Animation" id="Animation_xjtmg"]
 resource_name = "Fall_E"
@@ -347,6 +466,54 @@ tracks/11/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Sprites/Animations/Death_Fall:flip_h")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Sprites/Animations/Death_Fall:frame")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Sprites/Animations/Death_Cry:flip_h")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Sprites/Animations/Death_Cry:frame")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_p1iaw"]
 resource_name = "Run_E"
@@ -528,6 +695,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p1iaw"]
 _data = {
+&"Death_Cry_E": SubResource("Animation_rghsh"),
+&"Death_Cry_W": SubResource("Animation_pn0fr"),
+&"Death_Fall_E": SubResource("Animation_snbqk"),
+&"Death_Fall_W": SubResource("Animation_461gy"),
 &"Fall_E": SubResource("Animation_xjtmg"),
 &"Fall_W": SubResource("Animation_ij3by"),
 &"Idle_E": SubResource("Animation_70i1p"),
@@ -546,13 +717,19 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmxek"]
 size = Vector2(11, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1swo2"]
+size = Vector2(21, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_461gy"]
+size = Vector2(16, 30)
+
 [node name="Player_Node" type="Node2D" unique_id=791976363 node_paths=PackedStringArray("body")]
 script = ExtResource("1_1swo2")
 body = NodePath("CharacterBody2D")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=31766572 node_paths=PackedStringArray("maincore")]
-collision_layer = 129
-collision_mask = 129
+collision_layer = 128
+collision_mask = 163
 script = ExtResource("1_5mxd6")
 maincore = NodePath("PlayerCore")
 
@@ -566,6 +743,7 @@ player_core = NodePath("../PlayerCore")
 [node name="Animations" type="Node2D" parent="CharacterBody2D/Sprites" unique_id=1403339170]
 
 [node name="Idle" type="Sprite2D" parent="CharacterBody2D/Sprites/Animations" unique_id=267126387]
+visible = false
 position = Vector2(0, -18)
 texture = ExtResource("2_70i1p")
 hframes = 30
@@ -598,11 +776,22 @@ position = Vector2(0, -17)
 texture = ExtResource("7_bmpak")
 hframes = 6
 
-[node name="PlayerCore" type="Node" parent="CharacterBody2D" unique_id=930487026 node_paths=PackedStringArray("Ground_Control", "Air_Control", "Warrior", "body", "animator", "player_core")]
+[node name="Death_Fall" type="Sprite2D" parent="CharacterBody2D/Sprites/Animations" unique_id=1268126845]
+position = Vector2(0, -18)
+texture = ExtResource("10_snbqk")
+hframes = 4
+
+[node name="Death_Cry" type="Sprite2D" parent="CharacterBody2D/Sprites/Animations" unique_id=949467425]
+position = Vector2(0, -18)
+texture = ExtResource("11_461gy")
+hframes = 3
+
+[node name="PlayerCore" type="Node" parent="CharacterBody2D" unique_id=930487026 node_paths=PackedStringArray("Ground_Control", "Air_Control", "Warrior", "Death", "body", "animator", "player_core")]
 script = ExtResource("2_u3j3y")
 Ground_Control = NodePath("GroundControl")
 Air_Control = NodePath("AirControl")
 Warrior = NodePath("Warrior")
+Death = NodePath("Death")
 body = NodePath("..")
 animator = NodePath("../AnimationPlayer")
 player_core = NodePath(".")
@@ -641,6 +830,7 @@ max_speed_on_air = 50
 state_sprite = NodePath("../../../Sprites/Animations/Fall")
 
 [node name="Death" type="Node" parent="CharacterBody2D/PlayerCore" unique_id=1933367260]
+script = ExtResource("17_jwyds")
 
 [node name="Warrior" type="Node" parent="CharacterBody2D/PlayerCore" unique_id=505113479 node_paths=PackedStringArray("Transformation", "Cycle")]
 script = ExtResource("13_h05wd")
@@ -685,5 +875,23 @@ enabled = false
 position = Vector2(-0.5, -16)
 shape = SubResource("RectangleShape2D_pmxek")
 
+[node name="Hitbox" type="Area2D" parent="CharacterBody2D" unique_id=1414794126]
+collision_layer = 129
+collision_mask = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hitbox" unique_id=1537589020]
+position = Vector2(-1.5, -17.5)
+shape = SubResource("RectangleShape2D_1swo2")
+
+[node name="HurtBox" type="Area2D" parent="CharacterBody2D" unique_id=988670237]
+collision_layer = 129
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/HurtBox" unique_id=799420010]
+position = Vector2(-1, -15)
+shape = SubResource("RectangleShape2D_461gy")
+
 [connection signal="animation_finished" from="CharacterBody2D/AnimationPlayer" to="CharacterBody2D/AnimationPlayer" method="_on_animation_finished"]
 [connection signal="animation_started" from="CharacterBody2D/AnimationPlayer" to="CharacterBody2D/AnimationPlayer" method="_on_animation_started"]
+[connection signal="body_entered" from="CharacterBody2D/Hitbox" to="CharacterBody2D/PlayerCore/Warrior/Cycle" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="CharacterBody2D/HurtBox" to="CharacterBody2D/PlayerCore" method="_on_hurt_box_body_entered"]
