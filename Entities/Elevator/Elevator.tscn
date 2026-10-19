@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://efpyg5a76ygi"]
+
+[ext_resource type="Texture2D" uid="uid://dtth4dk7oeqft" path="res://Entities/Elevator/Sprites/Elevator_OFF-Sheet.png" id="1_7alax"]
+[ext_resource type="Script" uid="uid://47v3eoq4qdym" path="res://Entities/Elevator/elevator.gd" id="1_nye0l"]
+[ext_resource type="Texture2D" uid="uid://b4uuvmg3vpcbm" path="res://Entities/Elevator/Sprites/Elevator_Opening.png" id="2_8vmdk"]
+[ext_resource type="Texture2D" uid="uid://dre115tsoe11c" path="res://Entities/Elevator/Sprites/PlayerSpawn_animation.png" id="3_xmww5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vmdk"]
+atlas = ExtResource("1_7alax")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmww5"]
+atlas = ExtResource("1_7alax")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nye0l"]
+atlas = ExtResource("1_7alax")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mysue"]
+atlas = ExtResource("2_8vmdk")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwttx"]
+atlas = ExtResource("2_8vmdk")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypt0f"]
+atlas = ExtResource("2_8vmdk")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3s2a"]
+atlas = ExtResource("2_8vmdk")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8ugu"]
+atlas = ExtResource("2_8vmdk")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv1ws"]
+atlas = ExtResource("2_8vmdk")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mgc4"]
+atlas = ExtResource("2_8vmdk")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t2m4"]
+atlas = ExtResource("2_8vmdk")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vemx6"]
+atlas = ExtResource("2_8vmdk")
+region = Rect2(800, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mysue"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vmdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmww5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nye0l")
+}],
+"loop": true,
+"name": &"OFF",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mysue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwttx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypt0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3s2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8ugu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv1ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mgc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t2m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vemx6")
+}],
+"loop": false,
+"name": &"Opening",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_xmww5"]
+resource_name = "Player_Spawn"
+length = 3.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spawn_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8000001, 2, 2.2, 2.4, 2.6000001, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_nye0l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spawn_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mysue"]
+_data = {
+&"Player_Spawn": SubResource("Animation_xmww5"),
+&"RESET": SubResource("Animation_nye0l")
+}
+
+[node name="Elevator" type="Node2D" unique_id=530605117 node_paths=PackedStringArray("Base_Sprites", "Spawn_sprite", "_animator", "Spawn_Point")]
+script = ExtResource("1_nye0l")
+Base_Sprites = NodePath("AnimatedSprite2D")
+Spawn_sprite = NodePath("Spawn_Sprite")
+_animator = NodePath("Animator")
+Spawn_Point = NodePath("Spawn_Point")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=895675811]
+position = Vector2(0, -29)
+sprite_frames = SubResource("SpriteFrames_mysue")
+animation = &"OFF"
+autoplay = "OFF"
+frame_progress = 0.25333548
+
+[node name="Spawn_Sprite" type="Sprite2D" parent="." unique_id=1660418469]
+visible = false
+position = Vector2(0, -29)
+texture = ExtResource("3_xmww5")
+hframes = 15
+
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=1946913384]
+libraries/ = SubResource("AnimationLibrary_mysue")
+
+[node name="Spawn_Point" type="Node2D" parent="." unique_id=2060833129]
+position = Vector2(1, 0)

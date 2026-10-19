@@ -1,25 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://buoaj3iht7eq3"]
+[gd_scene format=3 uid="uid://buoaj3iht7eq3"]
 
-[ext_resource type="Shader" uid="uid://vj3ki3o58n73" path="res://Global/Crt_shader_structure/CRT_FX.gdshader" id="1_65p5r"]
-[ext_resource type="Shader" uid="uid://cbpyj0hv8un4l" path="res://Global/Crt_shader_structure/blur.gdshader" id="2_b2scl"]
-[ext_resource type="Shader" uid="uid://bl7bqddw8ntmd" path="res://Global/Crt_shader_structure/bloom.gdshader" id="3_3xxfg"]
+[ext_resource type="Shader" uid="uid://vj3ki3o58n73" path="res://Globals/Crt_shader_structure/CRT_FX.gdshader" id="1_65p5r"]
+[ext_resource type="Shader" uid="uid://cbpyj0hv8un4l" path="res://Globals/Crt_shader_structure/blur.gdshader" id="2_b2scl"]
+[ext_resource type="Shader" uid="uid://bl7bqddw8ntmd" path="res://Globals/Crt_shader_structure/bloom.gdshader" id="3_3xxfg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hj1c0"]
 shader = ExtResource("1_65p5r")
 shader_parameter/chromatic_aberration_ratio = 1.0
-shader_parameter/chromatic_aberration = true
-shader_parameter/enable_grain = true
+shader_parameter/chromatic_aberration = false
+shader_parameter/enable_grain = false
 shader_parameter/rgb_grid = true
 shader_parameter/vignette = true
 shader_parameter/vignette_size = 0.2
 shader_parameter/vignette_smoothness = 0.1
 shader_parameter/rgb_grid_subdivision = 3
-shader_parameter/scanline_count = 216.0
+shader_parameter/scanline_count = 240.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_761t5"]
 shader = ExtResource("2_b2scl")
 shader_parameter/step = Vector2(0.5, 0.5)
-shader_parameter/radius = 1.0
+shader_parameter/radius = 1.8
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x44r4"]
 shader = ExtResource("3_3xxfg")
@@ -29,11 +29,11 @@ shader_parameter/bloom_blur_iterations = 5
 shader_parameter/bloom_blur_size = 0.002
 shader_parameter/bloom_blur_subdivisions = 8
 
-[node name="crt_shader_structure" type="Node"]
+[node name="crt_shader_structure" type="Node" unique_id=683818741]
 
-[node name="CRT" type="CanvasLayer" parent="."]
+[node name="CRT" type="CanvasLayer" parent="." unique_id=425425268]
 
-[node name="ColorRect" type="ColorRect" parent="CRT"]
+[node name="ColorRect" type="ColorRect" parent="CRT" unique_id=935880840]
 material = SubResource("ShaderMaterial_hj1c0")
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,9 +41,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Blur" type="CanvasLayer" parent="."]
+[node name="Blur" type="CanvasLayer" parent="." unique_id=1020250837]
 
-[node name="ColorRect" type="ColorRect" parent="Blur"]
+[node name="ColorRect" type="ColorRect" parent="Blur" unique_id=605821366]
 material = SubResource("ShaderMaterial_761t5")
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,9 +51,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Bloom" type="CanvasLayer" parent="."]
+[node name="Bloom" type="CanvasLayer" parent="." unique_id=1334641549]
+visible = false
 
-[node name="ColorRect" type="ColorRect" parent="Bloom"]
+[node name="ColorRect" type="ColorRect" parent="Bloom" unique_id=1428606233]
 material = SubResource("ShaderMaterial_x44r4")
 anchors_preset = 15
 anchor_right = 1.0

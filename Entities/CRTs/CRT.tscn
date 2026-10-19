@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://djxtiq58imcfn"]
+
+[ext_resource type="Script" uid="uid://odh3wj5o04n6" path="res://Entities/CRTs/crt.gd" id="1_xsbrp"]
+[ext_resource type="Texture2D" uid="uid://muqggded1bsu" path="res://Entities/CRTs/Sprites/BlackTrinitron-ON.png" id="2_8cisp"]
+[ext_resource type="Texture2D" uid="uid://ca26pvodvqmhv" path="res://Entities/CRTs/Sprites/CRTIMAGES.png" id="2_drvpe"]
+[ext_resource type="Texture2D" uid="uid://scsrbvq0v5rd" path="res://Entities/CRTs/Sprites/GraySony-ON.png" id="3_quauo"]
+[ext_resource type="Texture2D" uid="uid://drvy8d8gewkpw" path="res://Entities/CRTs/Sprites/BlackTrinitron-Image.png" id="3_rfj1q"]
+[ext_resource type="Texture2D" uid="uid://x6lrbs8ff004" path="res://Entities/CRTs/Sprites/Kitty-ON.png" id="4_scagu"]
+[ext_resource type="Texture2D" uid="uid://c47pv24qnrt6g" path="res://Entities/CRTs/Sprites/Pikachu_ON.png" id="5_fvr2v"]
+[ext_resource type="Texture2D" uid="uid://c3plxiur700px" path="res://Entities/CRTs/Sprites/SonyPVM-ON.png" id="6_574fb"]
+[ext_resource type="Texture2D" uid="uid://cnld146f6p456" path="res://Entities/CRTs/Sprites/GraySony-Image.png" id="8_fvr2v"]
+[ext_resource type="Texture2D" uid="uid://dq8f4y5vwog71" path="res://Entities/CRTs/Sprites/Kitty-Image.png" id="9_574fb"]
+[ext_resource type="Texture2D" uid="uid://cu3fk3o75yhbf" path="res://Entities/CRTs/Sprites/Pikachu_Image.png" id="10_574fb"]
+[ext_resource type="Texture2D" uid="uid://rxkxmra8rx2y" path="res://Entities/CRTs/Sprites/SonyPVM-Image.png" id="11_uyyuy"]
+
+[sub_resource type="Animation" id="Animation_hbt05"]
+resource_name = "Image"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_8cisp"]
+resource_name = "OFF"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ON_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_rfj1q"]
+resource_name = "ON"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ON_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_drvpe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ON_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Image_Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hbt05"]
+_data = {
+&"Image": SubResource("Animation_hbt05"),
+&"OFF": SubResource("Animation_8cisp"),
+&"ON": SubResource("Animation_rfj1q"),
+&"RESET": SubResource("Animation_drvpe")
+}
+
+[sub_resource type="Animation" id="Animation_fi3gi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen_Anchor/Screen_Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_insmr"]
+resource_name = "Shake"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen_Anchor/Screen_Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_quauo"]
+_data = {
+&"RESET": SubResource("Animation_fi3gi"),
+&"Shake": SubResource("Animation_insmr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyyuy"]
+size = Vector2(24, 26)
+
+[node name="Crt" type="Node2D" unique_id=82550200 node_paths=PackedStringArray("area", "Screen_Anchor", "_animator", "_screen_animator", "ON_Sprite", "Image_Sprite", "ScreenSprite")]
+script = ExtResource("1_xsbrp")
+area = NodePath("Area2D")
+Screen_Anchor = NodePath("Screen_Anchor")
+_animator = NodePath("Animator")
+_screen_animator = NodePath("Screen_animator")
+ON_Sprite = NodePath("ON_Sprite")
+Image_Sprite = NodePath("Image_Sprite")
+ScreenSprite = NodePath("Screen_Anchor/Screen_Sprite")
+CRT_ON_Textures = Array[Texture2D]([ExtResource("2_8cisp"), ExtResource("3_quauo"), ExtResource("4_scagu"), ExtResource("5_fvr2v"), ExtResource("6_574fb")])
+CRT_Image_Textures = Array[Texture2D]([ExtResource("3_rfj1q"), ExtResource("8_fvr2v"), ExtResource("9_574fb"), ExtResource("10_574fb"), ExtResource("11_uyyuy")])
+
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=637219808]
+libraries/ = SubResource("AnimationLibrary_hbt05")
+
+[node name="Screen_Anchor" type="Node2D" parent="." unique_id=1229096640]
+position = Vector2(0, -1)
+
+[node name="Screen_Sprite" type="Sprite2D" parent="Screen_Anchor" unique_id=2046906195]
+position = Vector2(-1, 0)
+texture = ExtResource("2_drvpe")
+hframes = 7
+frame = 4
+
+[node name="ON_Sprite" type="Sprite2D" parent="." unique_id=101531375]
+visible = false
+texture = ExtResource("2_8cisp")
+hframes = 8
+
+[node name="Image_Sprite" type="Sprite2D" parent="." unique_id=1194974360]
+position = Vector2(1, 0)
+texture = ExtResource("3_rfj1q")
+hframes = 7
+
+[node name="Screen_animator" type="AnimationPlayer" parent="." unique_id=46142978]
+libraries/ = SubResource("AnimationLibrary_quauo")
+speed_scale = 1.5
+
+[node name="Area2D" type="Area2D" parent="." unique_id=12878975]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=869341174]
+position = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_uyyuy")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dignl51bwd4rp"]
+
+[ext_resource type="Script" uid="uid://c7ay6yb2mw8sv" path="res://Entities/Arcade_Stick/arcade_stick.gd" id="1_1ojut"]
+[ext_resource type="Texture2D" uid="uid://difvpwgmd6fpy" path="res://Entities/Arcade_Stick/Arcade_Stick.png" id="2_x37y2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74pm5"]
+atlas = ExtResource("2_x37y2")
+region = Rect2(0, 0, 21, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_midxf"]
+atlas = ExtResource("2_x37y2")
+region = Rect2(21, 0, 21, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi1vd"]
+atlas = ExtResource("2_x37y2")
+region = Rect2(42, 0, 21, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mcsn"]
+atlas = ExtResource("2_x37y2")
+region = Rect2(63, 0, 21, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgy64"]
+atlas = ExtResource("2_x37y2")
+region = Rect2(84, 0, 21, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6xjjo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74pm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_midxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi1vd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mcsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgy64")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ojut"]
+radius = 9.0
+
+[node name="ArcadeStick" type="Node2D" unique_id=1840891856]
+script = ExtResource("1_1ojut")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1584407116]
+sprite_frames = SubResource("SpriteFrames_6xjjo")
+autoplay = "default"
+frame_progress = 0.9985672
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1187731059]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=798587814]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_1ojut")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

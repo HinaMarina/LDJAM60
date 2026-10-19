@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bd23ft3rjocfk"]
+
+[ext_resource type="Script" uid="uid://dwh3j6nakmy6r" path="res://Globals/PlayerStatsManager/player_stats_manager.gd" id="1_e3qdl"]
+[ext_resource type="PackedScene" uid="uid://bkl7hb8ajc8jl" path="res://Entities/Player/player_node.tscn" id="2_u28s6"]
+
+[node name="PlayerStatsManager" type="Node2D" unique_id=134053491]
+script = ExtResource("1_e3qdl")
+PlayerScene = ExtResource("2_u28s6")

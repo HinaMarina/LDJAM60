@@ -2,12 +2,10 @@ shader_type canvas_item;
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
-// Radius that the shader was designed for.
 const float DEFAULT_RADIUS = 9.000000000;
 
-// Unit vector: (1, 0) or (0, 1)
 uniform vec2 step = vec2(0.5,0.5);
-// Desired blur radius.
+
 uniform float radius = 2.500000000;
 
 void fragment() {
