@@ -12,6 +12,8 @@ func _ready():
 	animator.play("Idle")
 
 func spawn_enemy():
+	if PlayerStatsManager.stage_cleared == true:
+		return
 	animator.play('Spawn')
 	await animator.animation_finished
 	EnemyManager.insert_enemy(Spawn_Anchor.global_position,current_scene)

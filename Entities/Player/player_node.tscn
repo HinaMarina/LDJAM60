@@ -25,8 +25,11 @@
 [ext_resource type="Script" uid="uid://b2i1xpkcv3bsb" path="res://Entities/Player/States/Warrior_ground_control.gd" id="18_y0x77"]
 [ext_resource type="Script" uid="uid://dufl4cj4x31q3" path="res://Entities/Player/States/Warrior_run.gd" id="19_04igh"]
 [ext_resource type="Script" uid="uid://cdh76plvxoj08" path="res://Entities/Player/States/Warrior_air_control.gd" id="20_fcw7a"]
+[ext_resource type="AudioStream" uid="uid://bbs3oew6h6c2h" path="res://Sound/Hurt.ogg" id="20_rghsh"]
 [ext_resource type="Script" uid="uid://stf78xf4ttfi" path="res://Entities/Player/States/Warrior_jump.gd" id="21_pa6vk"]
 [ext_resource type="Script" uid="uid://dihabtigg7scx" path="res://Entities/Player/States/Warrior_fall.gd" id="22_j8sk5"]
+[ext_resource type="AudioStream" uid="uid://bvx6bxjlyvcn4" path="res://Miscellaneous/Music/LevelSong.ogg" id="22_vb2jy"]
+[ext_resource type="AudioStream" uid="uid://lrsdvsn6plib" path="res://Miscellaneous/Music/Power_UP.ogg" id="23_pn0fr"]
 
 [sub_resource type="Animation" id="Animation_rghsh"]
 resource_name = "Death_Cry_E"
@@ -831,14 +834,17 @@ state_sprite = NodePath("../../../Sprites/Animations/Fall")
 
 [node name="Death" type="Node" parent="CharacterBody2D/PlayerCore" unique_id=1933367260]
 script = ExtResource("17_jwyds")
+HurtSFX = ExtResource("20_rghsh")
 
 [node name="Warrior" type="Node" parent="CharacterBody2D/PlayerCore" unique_id=505113479 node_paths=PackedStringArray("Transformation", "Cycle")]
 script = ExtResource("13_h05wd")
 Transformation = NodePath("Transformation")
 Cycle = NodePath("Cycle")
+Level_Song = ExtResource("22_vb2jy")
 
 [node name="Transformation" type="Node" parent="CharacterBody2D/PlayerCore/Warrior" unique_id=1819205463]
 script = ExtResource("16_xjtmg")
+WarriorFanfarre = ExtResource("23_pn0fr")
 
 [node name="Cycle" type="Node" parent="CharacterBody2D/PlayerCore/Warrior" unique_id=59990441 node_paths=PackedStringArray("GroundControl", "AirControl", "state_sprite")]
 script = ExtResource("17_ij3by")

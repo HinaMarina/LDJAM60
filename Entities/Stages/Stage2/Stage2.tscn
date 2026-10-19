@@ -92,6 +92,7 @@ Player_Layer = NodePath("PlayerLevel")
 Enemy_Layer = NodePath("EnemyLevel")
 Level_Elevator = NodePath("Elevator")
 Tape_Level = NodePath("TapeLevel")
+CRT_Amount = 3
 
 [node name="MovingBG" type="TileMapLayer" parent="." unique_id=791132129]
 position = Vector2(377, -176)

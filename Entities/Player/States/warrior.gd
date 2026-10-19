@@ -2,6 +2,7 @@ extends PlayerState
 
 @export var Transformation:PlayerState
 @export var Cycle:PlayerState
+@export var Level_Song:AudioStream
 
 func enter():
 	super()
@@ -22,3 +23,7 @@ func do(delta):
 	super(delta)
 	if Cycle.is_active() && Cycle.is_complete:
 		complete()
+
+func complete():
+	SoundManager.play_bgm(Level_Song)
+	super()

@@ -1,56 +1,183 @@
 [gd_scene format=3 uid="uid://bd23ft3rjocfk"]
 
 [ext_resource type="Script" uid="uid://dwh3j6nakmy6r" path="res://Globals/PlayerStatsManager/player_stats_manager.gd" id="1_e3qdl"]
+[ext_resource type="AudioStream" uid="uid://bjp4r2c0l46ar" path="res://Miscellaneous/Music/Fanfarre.ogg" id="2_nifns"]
 [ext_resource type="PackedScene" uid="uid://bkl7hb8ajc8jl" path="res://Entities/Player/player_node.tscn" id="2_u28s6"]
 [ext_resource type="PackedScene" uid="uid://bckfkyfp4ju4m" path="res://Entities/VHS_Tape/vhs_tape.tscn" id="2_xkjh7"]
 [ext_resource type="Texture2D" uid="uid://60630qpa7bgg" path="res://Miscellaneous/Level_assets/BG Levels.png" id="3_k3yt6"]
+[ext_resource type="AudioStream" uid="uid://bndw41dy6d7m1" path="res://Miscellaneous/Music/Game_Over.ogg" id="3_krja0"]
+[ext_resource type="AudioStream" uid="uid://bvx6bxjlyvcn4" path="res://Miscellaneous/Music/LevelSong.ogg" id="4_avgty"]
+[ext_resource type="PackedScene" uid="uid://dnv62isevype7" path="res://Entities/Stages/Stage1/Stage1.tscn" id="4_hhb7a"]
+[ext_resource type="Texture2D" uid="uid://bof4ljn45i507" path="res://Miscellaneous/Interface/Stage_Clear_Label.png" id="5_bh4i8"]
+[ext_resource type="PackedScene" uid="uid://b8enty3vdcg4s" path="res://Entities/Stages/Stage2/Stage2.tscn" id="5_lxjel"]
+[ext_resource type="Texture2D" uid="uid://bubskbamuhy77" path="res://Miscellaneous/Interface/Life_Amount_Icon.png" id="6_lrrqk"]
+[ext_resource type="PackedScene" uid="uid://dwepm35qbnr7d" path="res://Entities/Stages/Stage3/stage3.tscn" id="6_mw1mx"]
+[ext_resource type="PackedScene" uid="uid://cupqxq1m68qbo" path="res://Entities/Stages/Stage4/Stage4.tscn" id="7_7snlx"]
+[ext_resource type="Texture2D" uid="uid://di7qsfbo5tglm" path="res://Miscellaneous/Interface/Stage_Clear_PressStart.png" id="8_lxjel"]
+[ext_resource type="PackedScene" uid="uid://bi7ii803a4tr3" path="res://Entities/Stages/Stage5/Stage5.tscn" id="8_okoa4"]
+[ext_resource type="PackedScene" uid="uid://dfbcm531t5ocv" path="res://Entities/Stages/Stage6/Stage6.tscn" id="9_0ct6a"]
+[ext_resource type="Texture2D" uid="uid://biusaa4fl7t3i" path="res://Miscellaneous/Interface/Game_Over.png" id="10_lujue"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_k3yt6"]
-font_size = 12
-font_color = Color(1, 0, 0, 1)
+[sub_resource type="Animation" id="Animation_lujue"]
+resource_name = "Game_Over"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.011764706, 0.011764706, 0.011764706, 0), Color(1, 1, 1, 1)]
+}
 
-[sub_resource type="LabelSettings" id="LabelSettings_xkjh7"]
-font_size = 12
-font_color = Color(1, 0, 0, 1)
+[sub_resource type="Animation" id="Animation_lxjel"]
+resource_name = "Press_Start"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Press_Start:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
-[sub_resource type="LabelSettings" id="LabelSettings_bh4i8"]
-font_size = 10
-font_color = Color(1, 0, 0, 1)
+[sub_resource type="Animation" id="Animation_bh4i8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Stage_Clear_Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Press_Start:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/Press_Start:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.011764706, 0.011764706, 0.011764706, 0)]
+}
 
-[node name="PlayerStatsManager" type="Node2D" unique_id=134053491 node_paths=PackedStringArray("credit_label", "points_label")]
+[sub_resource type="Animation" id="Animation_hswmj"]
+resource_name = "Stage_Clear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Stage_Clear_Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.22531264, 4.1410594),
+"update": 0,
+"values": [Vector2(640, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Press_Start:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hhb7a"]
+_data = {
+&"Game_Over": SubResource("Animation_lujue"),
+&"Press_Start": SubResource("Animation_lxjel"),
+&"RESET": SubResource("Animation_bh4i8"),
+&"Stage_Clear": SubResource("Animation_hswmj")
+}
+
+[node name="PlayerStatsManager" type="Node2D" unique_id=134053491 node_paths=PackedStringArray("life_amount_icon", "state_clear_animator")]
 script = ExtResource("1_e3qdl")
+Fanfarre = ExtResource("2_nifns")
+Game_Over = ExtResource("3_krja0")
+Level_Song = ExtResource("4_avgty")
+life_amount_icon = NodePath("CanvasLayer/TextureRect")
 vhs_tape_scene = ExtResource("2_xkjh7")
+state_clear_animator = NodePath("AnimationPlayer")
 PlayerScene = ExtResource("2_u28s6")
-credit_label = NodePath("CanvasLayer/Credits_number")
-points_label = NodePath("CanvasLayer/Points")
+All_Stages = Array[PackedScene]([ExtResource("4_hhb7a"), ExtResource("6_mw1mx"), ExtResource("5_lxjel"), ExtResource("9_0ct6a"), ExtResource("7_7snlx"), ExtResource("8_okoa4")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1768854056]
 
-[node name="Credits" type="Label" parent="CanvasLayer" unique_id=1906385669]
-offset_left = 300.0
-offset_top = 342.0
-offset_right = 357.0
-offset_bottom = 365.0
-text = "credits "
-label_settings = SubResource("LabelSettings_k3yt6")
-
-[node name="Credits_number" type="Label" parent="CanvasLayer" unique_id=1439166571]
-offset_left = 290.0
-offset_top = 343.0
-offset_right = 330.0
-offset_bottom = 366.0
-text = "0"
-label_settings = SubResource("LabelSettings_xkjh7")
-
-[node name="Points" type="Label" parent="CanvasLayer" unique_id=509584034]
-offset_left = 482.0
-offset_right = 556.0
-offset_bottom = 23.0
-text = "99999999"
-label_settings = SubResource("LabelSettings_bh4i8")
-horizontal_alignment = 2
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=994126824]
+custom_minimum_size = Vector2(18, 20)
+offset_left = 87.0
+offset_top = 339.0
+offset_right = 105.0
+offset_bottom = 359.0
+texture = ExtResource("6_lrrqk")
+stretch_mode = 1
 
 [node name="BG" type="Sprite2D" parent="." unique_id=86079461]
 visible = false
 position = Vector2(320, 180)
 texture = ExtResource("3_k3yt6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=565620209]
+libraries/ = SubResource("AnimationLibrary_hhb7a")
+
+[node name="Stage_Clear_Sprite" type="Sprite2D" parent="AnimationPlayer" unique_id=759006637]
+z_index = 4096
+position = Vector2(640, 0)
+texture = ExtResource("5_bh4i8")
+
+[node name="Press_Start" type="Sprite2D" parent="AnimationPlayer" unique_id=531403145]
+visible = false
+z_index = 4096
+position = Vector2(-15, -34)
+texture = ExtResource("8_lxjel")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimationPlayer" unique_id=204101307]
+modulate = Color(0.011764706, 0.011764706, 0.011764706, 0)
+z_index = 4096
+texture = ExtResource("10_lujue")

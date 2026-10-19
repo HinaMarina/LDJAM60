@@ -1,7 +1,7 @@
 class_name Elevator extends Node2D
 
 @export var Base_Sprites:AnimatedSprite2D
-
+@export var SpawnSFX:AudioStream
 @export var Spawn_sprite:Sprite2D
 @export var _animator:AnimationPlayer
 @export var Spawn_Point:Node2D
@@ -14,6 +14,7 @@ func _ready():
 
 
 func spawn():
+	SoundManager.play_sfx(SpawnSFX)
 	Spawn_sprite.visible = true
 	_animator.play("Player_Spawn")
 	await _animator.animation_finished

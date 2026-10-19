@@ -5,21 +5,33 @@ signal player_spawned()
 signal player_died(vhs_array:Array[VHSTape])
 
 var current_scene:SceneLevel
+var stage_cleared:bool = false
+
+@export var Fanfarre:AudioStream
+@export var Game_Over:AudioStream
+@export var Level_Song:AudioStream
+
+@export var life_amount_icon:TextureRect
 
 @export var vhs_tape_scene:PackedScene
+@export var state_clear_animator:AnimationPlayer
 
 @onready var Credits:int=0
 @onready var PlayerPoints:int = 0
-@onready var Life_Amount:int = 1
+@onready var Life_Amount:int = 3
 
+@onready var current_scene_index:int=0
 
 
 @export var PlayerScene:PackedScene
 @export var credit_label:Label
 @export var points_label:Label
 
+@export var All_Stages: Array[PackedScene]
 
 func Spawn_Player(spawn_target:Vector2,Scene:SceneLevel):
+	life_amount_icon.visible = true
+	stage_cleared = false
 	current_scene = Scene
 	var Player = PlayerScene.instantiate()
 	Scene.insert_player(Player)
@@ -30,14 +42,22 @@ func Spawn_Player(spawn_target:Vector2,Scene:SceneLevel):
 
 func insert_credit():
 	Credits+=1
-	credit_label.text = str(Credits)
 
 func use_credit():
 	Credits-=1
-	credit_label.text = str(Credits)
 
 
 func _input(event: InputEvent) -> void:
+	if stage_cleared:
+		if Input.is_action_just_pressed('start_game'):
+			SoundManager.play_bgm(Level_Song)
+			state_clear_animator.play_backwards("Stage_Clear")
+			await state_clear_animator.animation_finished
+			get_tree().change_scene_to_packed(All_Stages[current_scene_index+1])
+			stage_cleared = false
+			await get_tree().create_timer(0.2).timeout
+			current_scene = get_tree().current_scene as SceneLevel
+			current_scene.Level_Elevator.spawn()
 	if Input.is_action_just_pressed("insert_credit"):
 		insert_credit()
 		
@@ -48,13 +68,21 @@ func add_points(amount:int):
 
 func _ready() -> void:
 	player_died.connect(on_player_death)
+	life_amount_icon.size.x = Life_Amount*life_amount_icon.get_minimum_size().x
+	life_amount_icon.visible = false
 	
 func on_player_death(tapes:Array[VHSTape]):
 	Life_Amount -=1
-	
+	life_amount_icon.size.x = Life_Amount*life_amount_icon.get_minimum_size().x
+
 	if Life_Amount <= 0:
-		pass
-		
+		life_amount_icon.visible = false
+		state_clear_animator.play("Game_Over")
+		SoundManager.play_bgm(Game_Over)
+		return
+	
+	else:
+		current_scene.Level_Elevator.spawn()
 		
 	var all_initial_locations :Array[Vector2]
 	for each_tape in tapes:
@@ -79,4 +107,30 @@ func on_player_death(tapes:Array[VHSTape]):
 			#tape.monitoring()
 			#print('here')
 		#tapes.clear()
-	
+		
+func _process(delta: float) -> void:
+	if current_scene != null:
+		if current_scene.CRT_Amount<=0 && !stage_cleared:
+			EnemyManager.clear_all_enemies()
+			#current_scene.Current_Player.body.maincore.pause_movement()
+			stage_cleared = true
+			SoundManager.play_bgm(Fanfarre)
+			state_clear_animator.play("Stage_Clear")
+			await state_clear_animator.animation_finished
+			state_clear_animator.play('Press_Start')
+			pass
+			
+func next_stage():
+	pass
+
+func set_first_stage():
+	SoundManager.play_bgm(Level_Song)
+	get_tree().change_scene_to_packed(PlayerStatsManager.All_Stages[0])
+	stage_cleared = false
+	await get_tree().create_timer(0.1).timeout
+	current_scene = get_tree().current_scene as SceneLevel
+	current_scene.Level_Elevator.spawn()
+
+func add_life():
+	Life_Amount +=1
+	life_amount_icon.size.x = Life_Amount*life_amount_icon.get_minimum_size().x

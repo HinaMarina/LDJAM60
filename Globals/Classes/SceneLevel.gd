@@ -6,6 +6,9 @@ class_name SceneLevel extends Node2D
 @export var Level_Elevator:Elevator
 @export var Tape_Level:Node2D
 
+@export var CRT_Amount:int=1
+
+
 #@export var rect_map:TileMapLayer
 #@export var platform_tilemap:TileMapLayer
 #@onready var pathfiding_grid := AStarGrid2D.new()

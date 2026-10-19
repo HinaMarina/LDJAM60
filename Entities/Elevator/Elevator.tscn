@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dtth4dk7oeqft" path="res://Entities/Elevator/Sprites/Elevator_OFF-Sheet.png" id="1_7alax"]
 [ext_resource type="Script" uid="uid://47v3eoq4qdym" path="res://Entities/Elevator/elevator.gd" id="1_nye0l"]
 [ext_resource type="Texture2D" uid="uid://b4uuvmg3vpcbm" path="res://Entities/Elevator/Sprites/Elevator_Opening.png" id="2_8vmdk"]
+[ext_resource type="AudioStream" uid="uid://cw3r6243goka0" path="res://Sound/Elevator_Spawn.ogg" id="2_mysue"]
 [ext_resource type="Texture2D" uid="uid://dre115tsoe11c" path="res://Entities/Elevator/Sprites/PlayerSpawn_animation.png" id="3_xmww5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8vmdk"]
@@ -143,6 +144,7 @@ _data = {
 [node name="Elevator" type="Node2D" unique_id=530605117 node_paths=PackedStringArray("Base_Sprites", "Spawn_sprite", "_animator", "Spawn_Point")]
 script = ExtResource("1_nye0l")
 Base_Sprites = NodePath("AnimatedSprite2D")
+SpawnSFX = ExtResource("2_mysue")
 Spawn_sprite = NodePath("Spawn_Sprite")
 _animator = NodePath("Animator")
 Spawn_Point = NodePath("Spawn_Point")

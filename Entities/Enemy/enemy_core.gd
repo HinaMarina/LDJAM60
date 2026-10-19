@@ -72,6 +72,7 @@ func update_player_direction():
 	direction_y = -EnemyManager.current_scene.Current_Player.body.global_position.direction_to(body.global_position).y
 
 func die():
+	#var index = EnemyManager.all_spawned_enemies.bsearch(self.get_parent().get_parent())
 	main_machine.set_state(Death)
 
 

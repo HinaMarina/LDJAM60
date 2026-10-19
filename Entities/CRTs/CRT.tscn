@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://odh3wj5o04n6" path="res://Entities/CRTs/crt.gd" id="1_xsbrp"]
 [ext_resource type="Texture2D" uid="uid://muqggded1bsu" path="res://Entities/CRTs/Sprites/BlackTrinitron-ON.png" id="2_8cisp"]
 [ext_resource type="Texture2D" uid="uid://ca26pvodvqmhv" path="res://Entities/CRTs/Sprites/CRTIMAGES.png" id="2_drvpe"]
+[ext_resource type="AudioStream" uid="uid://dvp1niw31v68c" path="res://Sound/CRTON.ogg" id="2_qt76a"]
 [ext_resource type="Texture2D" uid="uid://scsrbvq0v5rd" path="res://Entities/CRTs/Sprites/GraySony-ON.png" id="3_quauo"]
 [ext_resource type="Texture2D" uid="uid://drvy8d8gewkpw" path="res://Entities/CRTs/Sprites/BlackTrinitron-Image.png" id="3_rfj1q"]
 [ext_resource type="Texture2D" uid="uid://x6lrbs8ff004" path="res://Entities/CRTs/Sprites/Kitty-ON.png" id="4_scagu"]
@@ -142,6 +143,7 @@ size = Vector2(24, 26)
 
 [node name="Crt" type="Node2D" unique_id=82550200 node_paths=PackedStringArray("area", "Screen_Anchor", "_animator", "_screen_animator", "ON_Sprite", "Image_Sprite", "ScreenSprite")]
 script = ExtResource("1_xsbrp")
+ON_SFX = ExtResource("2_qt76a")
 area = NodePath("Area2D")
 Screen_Anchor = NodePath("Screen_Anchor")
 _animator = NodePath("Animator")

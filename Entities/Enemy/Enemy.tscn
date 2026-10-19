@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bfu12e3dv36e7" path="res://Entities/Enemy/States/jump.gd" id="8_0p0qh"]
 [ext_resource type="Script" uid="uid://dpr5mbeufyfgb" path="res://Entities/Enemy/States/fall.gd" id="9_k11i2"]
 [ext_resource type="Script" uid="uid://dfgu7lly55fvh" path="res://Entities/Enemy/States/death.gd" id="10_r7nea"]
+[ext_resource type="AudioStream" uid="uid://b2pch7x5kg0g6" path="res://Sound/Enemy.ogg" id="11_ej5u7"]
 [ext_resource type="Texture2D" uid="uid://c0mqy2oi8anp5" path="res://Entities/Enemy/Sprites/Enemy_Death.png" id="14_oe1wn"]
 
 [sub_resource type="Animation" id="Animation_r7nea"]
@@ -425,8 +426,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m2t2i"]
 size = Vector2(11, 25)
 
-[node name="Enemy" type="Node2D" unique_id=730408465]
+[node name="Enemy" type="Node2D" unique_id=730408465 node_paths=PackedStringArray("Core")]
 script = ExtResource("1_y11p7")
+Core = NodePath("CharacterBody2D/EnemyCore")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1453003840 node_paths=PackedStringArray("enemycore")]
 collision_layer = 64
@@ -480,6 +482,7 @@ fall_time = 0.4
 
 [node name="Death" type="Node" parent="CharacterBody2D/EnemyCore" unique_id=324567600]
 script = ExtResource("10_r7nea")
+DeathSFX = ExtResource("11_ej5u7")
 
 [node name="JumpDelayer" type="Timer" parent="CharacterBody2D/EnemyCore" unique_id=61714101]
 wait_time = 2.0

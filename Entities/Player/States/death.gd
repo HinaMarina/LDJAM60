@@ -1,7 +1,9 @@
 extends PlayerState
 
+@export var HurtSFX:AudioStream
 
 func enter():
+	SoundManager.play_sfx(HurtSFX)
 	PlayerStatsManager.player_died.emit(core.player_core.body.current_tapes)
 	if core.player_core.xInput>=0:
 		core.player_core.animator.play("Death_Fall_E")

@@ -1,5 +1,8 @@
 class_name CRT extends Node2D
 
+@export var already_on:bool
+@export var ON_SFX:AudioStream
+
 
 @export var area:Area2D
 var can_insert:bool=false
@@ -22,6 +25,10 @@ var player:PlayerBody
 #0 = Black Trinitron, 1= GraySony, 2=Kitty, 3=Pikachu,4=SonyPVM
 
 func _ready() -> void:
+	if already_on:
+		turn_on()
+		set_model()
+		return
 	_animator.play('OFF')
 	ON_Sprite.visible = true
 	ScreenSprite.visible = false
@@ -29,6 +36,11 @@ func _ready() -> void:
 	
 
 func turn_on():
+	if !already_on:
+		PlayerStatsManager.current_scene.CRT_Amount -=1
+	
+	
+	SoundManager.play_sfx(ON_SFX)
 	area.set_deferred('monitoring',false)
 	is_on = true
 	_animator.play('ON')

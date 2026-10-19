@@ -49,8 +49,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ojut"]
 radius = 9.0
 
-[node name="ArcadeStick" type="Node2D" unique_id=1840891856]
+[node name="ArcadeStick" type="Node2D" unique_id=1840891856 node_paths=PackedStringArray("area")]
 script = ExtResource("1_1ojut")
+area = NodePath("Area2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1584407116]
 sprite_frames = SubResource("SpriteFrames_6xjjo")
