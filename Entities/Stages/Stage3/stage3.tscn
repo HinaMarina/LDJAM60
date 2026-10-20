@@ -63,7 +63,7 @@ sources/1 = SubResource("TileSetAtlasSource_38e1m")
 [node name="Stage3" type="Node2D" unique_id=776532164 node_paths=PackedStringArray("start_timer", "TimeLabel", "Player_Layer", "Enemy_Layer", "Level_Elevator", "Tape_Level")]
 script = ExtResource("1_yau5p")
 start_timer = NodePath("Timer")
-level_time_amount = 15
+level_time_amount = 20
 TimeLabel = NodePath("Label")
 Player_Layer = NodePath("PlayerLevel")
 Enemy_Layer = NodePath("EnemyLevel")
@@ -78,6 +78,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAIAAgAAAAA
 tile_set = SubResource("TileSet_xtl08")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1660848880]
+enabled = false
 
 [node name="crt_shader_structure" parent="Camera2D" unique_id=683818741 instance=ExtResource("2_i5tnv")]
 
@@ -146,10 +147,10 @@ position = Vector2(0, 157)
 [node name="EnemyLevel" type="Node2D" parent="." unique_id=504631142]
 
 [node name="Escalator_4Tiles" parent="." unique_id=481596281 instance=ExtResource("9_i5tnv")]
-position = Vector2(-152, -94)
+position = Vector2(-152, -96)
 
 [node name="Escalator_4Tiles2" parent="." unique_id=1767411792 instance=ExtResource("9_i5tnv")]
-position = Vector2(151, -94)
+position = Vector2(151, -96)
 scale = Vector2(-1, 1)
 pointing_right = false
 

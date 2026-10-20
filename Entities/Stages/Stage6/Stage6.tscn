@@ -63,6 +63,7 @@ sources/1 = SubResource("TileSetAtlasSource_rowgf")
 [node name="Stage6" type="Node2D" unique_id=228004085 node_paths=PackedStringArray("start_timer", "TimeLabel", "Player_Layer", "Enemy_Layer", "Level_Elevator", "Tape_Level")]
 script = ExtResource("1_vadur")
 start_timer = NodePath("Timer")
+level_time_amount = 20
 TimeLabel = NodePath("Label")
 Player_Layer = NodePath("PlayerLevel")
 Enemy_Layer = NodePath("EnemyLevel")
@@ -77,6 +78,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAIAAgAAAAA
 tile_set = SubResource("TileSet_1t4e3")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=930572196]
+enabled = false
 
 [node name="crt_shader_structure" parent="Camera2D" unique_id=683818741 instance=ExtResource("3_qu8g4")]
 
@@ -131,20 +133,23 @@ position = Vector2(-15, -72)
 
 [node name="Crt" parent="." unique_id=82550200 instance=ExtResource("9_gnhlb")]
 position = Vector2(105, 43)
+Model = 3
 
 [node name="Crt2" parent="." unique_id=231967704 instance=ExtResource("9_gnhlb")]
 position = Vector2(151, 43)
-Model = 1
+Model = 3
 
 [node name="Crt3" parent="." unique_id=1121166019 instance=ExtResource("9_gnhlb")]
 position = Vector2(82, 91)
+Model = 1
 
 [node name="Crt4" parent="." unique_id=307436642 instance=ExtResource("9_gnhlb")]
 position = Vector2(128, 91)
-Model = 1
+Model = 2
 
 [node name="Crt5" parent="." unique_id=1984608626 instance=ExtResource("9_gnhlb")]
 position = Vector2(174, 91)
+Model = 1
 
 [node name="PlayerLevel" type="Node2D" parent="." unique_id=1652177143]
 position = Vector2(0, 157)

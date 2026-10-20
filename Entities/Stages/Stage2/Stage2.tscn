@@ -101,6 +101,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAIAAgAAAAA
 tile_set = SubResource("TileSet_pl67n")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1267447427]
+enabled = false
 
 [node name="crt_shader_structure" parent="Camera2D" unique_id=683818741 instance=ExtResource("2_c6uyi")]
 
@@ -159,12 +160,15 @@ position = Vector2(72, 23)
 
 [node name="Crt" parent="." unique_id=82550200 instance=ExtResource("11_ces0g")]
 position = Vector2(199, 32)
+Model = 2
 
 [node name="Crt2" parent="." unique_id=629549668 instance=ExtResource("11_ces0g")]
 position = Vector2(-144, 96)
+Model = 2
 
 [node name="Crt3" parent="." unique_id=865584247 instance=ExtResource("11_ces0g")]
 position = Vector2(104, -96)
+Model = 1
 
 [node name="TapeLevel" type="Node2D" parent="." unique_id=645737402]
 

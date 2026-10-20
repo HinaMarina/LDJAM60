@@ -29,7 +29,8 @@ func _ready():
 	main_machine.machine_owner = self
 	set_instances()
 	
-	main_machine.set_state(Enemy_Search)
+	main_machine.set_state(Walk)
+	SearchTimer.start(3)
 	
 func select_state():
 	if delayed_direction_y<0 && Walk.is_active() && can_jump:
@@ -48,7 +49,7 @@ func select_state():
 		main_machine.set_state(AirControl)
 		
 	if Enemy_Search.is_active() && Enemy_Search.is_complete:
-		SearchTimer.start()
+		SearchTimer.start(6)
 		main_machine.set_state(Walk)
 		
 		

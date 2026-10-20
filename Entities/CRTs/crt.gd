@@ -71,6 +71,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if Input.is_action_just_pressed("insert_vhs"):
 		player.insert_tape()
+		can_insert = false
 		turn_on()
 		
 func set_model():

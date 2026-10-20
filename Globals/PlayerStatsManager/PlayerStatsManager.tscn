@@ -17,6 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://bi7ii803a4tr3" path="res://Entities/Stages/Stage5/Stage5.tscn" id="8_okoa4"]
 [ext_resource type="PackedScene" uid="uid://dfbcm531t5ocv" path="res://Entities/Stages/Stage6/Stage6.tscn" id="9_0ct6a"]
 [ext_resource type="Texture2D" uid="uid://biusaa4fl7t3i" path="res://Miscellaneous/Interface/Game_Over.png" id="10_lujue"]
+[ext_resource type="PackedScene" uid="uid://j008soxuhdeg" path="res://Entities/Stages/TitleScreen/title_screen.tscn" id="13_krja0"]
+[ext_resource type="PackedScene" uid="uid://buoaj3iht7eq3" path="res://Globals/Crt_shader_structure/crt_shader_structure.tscn" id="19_avgty"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nifns"]
+font_size = 19
+outline_size = 2
+outline_color = Color(1, 0.736, 0.33999997, 1)
+shadow_color = Color(0, 0, 0, 0.57254905)
 
 [sub_resource type="Animation" id="Animation_lujue"]
 resource_name = "Game_Over"
@@ -100,6 +108,42 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(0.011764706, 0.011764706, 0.011764706, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/ColorRect:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-764, 2)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Label:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_hswmj"]
 resource_name = "Stage_Clear"
@@ -128,12 +172,52 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_krja0"]
+resource_name = "THANKS"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(11.712677, 1.2745615),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 2.3784144),
+"update": 0,
+"values": [Vector2(-764, 2), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hhb7a"]
 _data = {
 &"Game_Over": SubResource("Animation_lujue"),
 &"Press_Start": SubResource("Animation_lxjel"),
 &"RESET": SubResource("Animation_bh4i8"),
-&"Stage_Clear": SubResource("Animation_hswmj")
+&"Stage_Clear": SubResource("Animation_hswmj"),
+&"THANKS": SubResource("Animation_krja0")
 }
 
 [node name="PlayerStatsManager" type="Node2D" unique_id=134053491 node_paths=PackedStringArray("life_amount_icon", "state_clear_animator")]
@@ -146,6 +230,7 @@ vhs_tape_scene = ExtResource("2_xkjh7")
 state_clear_animator = NodePath("AnimationPlayer")
 PlayerScene = ExtResource("2_u28s6")
 All_Stages = Array[PackedScene]([ExtResource("4_hhb7a"), ExtResource("6_mw1mx"), ExtResource("5_lxjel"), ExtResource("9_0ct6a"), ExtResource("7_7snlx"), ExtResource("8_okoa4")])
+Start_Menu_Packed = ExtResource("13_krja0")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1768854056]
 
@@ -157,6 +242,30 @@ offset_right = 105.0
 offset_bottom = 359.0
 texture = ExtResource("6_lrrqk")
 stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1189522345]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -764.0
+offset_top = 2.0
+offset_right = -764.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06469653, 0.06469653, 0.06469653, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=154375743]
+modulate = Color(1, 1, 1, 0)
+offset_left = 210.0
+offset_top = 141.0
+offset_right = 453.0
+offset_bottom = 198.0
+text = "THANK YOU FOR PLAYING!
+"
+label_settings = SubResource("LabelSettings_nifns")
+horizontal_alignment = 1
 
 [node name="BG" type="Sprite2D" parent="." unique_id=86079461]
 visible = false
@@ -181,3 +290,7 @@ texture = ExtResource("8_lxjel")
 modulate = Color(0.011764706, 0.011764706, 0.011764706, 0)
 z_index = 4096
 texture = ExtResource("10_lujue")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=621480440]
+
+[node name="crt_shader_structure" parent="Camera2D" unique_id=683818741 instance=ExtResource("19_avgty")]

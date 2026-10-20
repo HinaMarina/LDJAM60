@@ -6,14 +6,15 @@ class_name Bonus_Level extends SceneLevel
 @onready var labelTimer:=Timer.new()
 @onready var time_left:=level_time_amount
 var real_crt_amount
+
 func _ready() -> void:
-	self.add_child(labelTimer)
 	TimeLabel.text = str(level_time_amount)
 	real_crt_amount = CRT_Amount
 	CRT_Amount = 100
 	start_timer.timeout.connect(on_timeout)
 	labelTimer.timeout.connect(on_label_timer_timeout)
 	TimeLabel.visible = false
+	self.add_child(labelTimer)
 
 func insert_player(Player:PlayerNode):
 	
@@ -37,4 +38,10 @@ func on_label_timer_timeout():
 	if time_left <=0:
 		TimeLabel.visible = false
 	
+	
+func _process(delta: float) -> void:
+	if 100 - CRT_Amount == real_crt_amount:
+		start_timer.stop()
+		labelTimer.stop()
+		on_timeout()
 	

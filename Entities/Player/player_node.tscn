@@ -718,7 +718,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmxek"]
-size = Vector2(11, 32)
+size = Vector2(11, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1swo2"]
 size = Vector2(21, 35)
@@ -878,7 +878,7 @@ state_sprite = NodePath("../../../../../Sprites/Animations/Warrior_Cycle")
 enabled = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=650111832]
-position = Vector2(-0.5, -16)
+position = Vector2(-0.5, -15)
 shape = SubResource("RectangleShape2D_pmxek")
 
 [node name="Hitbox" type="Area2D" parent="CharacterBody2D" unique_id=1414794126]

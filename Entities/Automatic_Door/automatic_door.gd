@@ -7,11 +7,15 @@ class_name AutomaticDoor extends Node2D
 @export var Level_Enemy_Amount:=1
 var current_scene:SceneLevel
 
+@export var delay:float = 0.1
+
 func _ready():
+	$Timer.wait_time = $Timer.wait_time+delay
 	current_scene = get_parent() as SceneLevel
 	animator.play("Idle")
 
 func spawn_enemy():
+	await get_tree().create_timer(delay).timeout
 	if PlayerStatsManager.stage_cleared == true:
 		return
 	animator.play('Spawn')

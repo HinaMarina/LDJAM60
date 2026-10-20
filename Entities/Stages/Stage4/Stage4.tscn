@@ -91,7 +91,7 @@ script = ExtResource("1_g41qn")
 Player_Layer = NodePath("PlayerLevel")
 Enemy_Layer = NodePath("EnemyLevel")
 Level_Elevator = NodePath("Elevator")
-Tape_Level = NodePath("TapeLevel/VhsTape")
+Tape_Level = NodePath("TapeLevel")
 CRT_Amount = 4
 
 [node name="MovingBG" type="TileMapLayer" parent="." unique_id=815664208]
@@ -101,6 +101,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAIAAgAAAAA
 tile_set = SubResource("TileSet_geklt")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1048326437]
+enabled = false
 
 [node name="crt_shader_structure" parent="Camera2D" unique_id=683818741 instance=ExtResource("3_431e7")]
 
@@ -144,37 +145,49 @@ Current_Scene = NodePath("..")
 [node name="AutomaticDoor" parent="." unique_id=389419091 instance=ExtResource("9_hual3")]
 position = Vector2(103, -32)
 Level_Enemy_Amount = 2
+delay = 0.0
+
+[node name="AutomaticDoor2" parent="." unique_id=274646248 instance=ExtResource("9_hual3")]
+position = Vector2(55, 32)
+Level_Enemy_Amount = 3
+delay = 0.2
 
 [node name="ArcadeStick" parent="." unique_id=1840891856 instance=ExtResource("10_csp1s")]
 position = Vector2(72, -125)
 
 [node name="Crt" parent="." unique_id=82550200 instance=ExtResource("11_8lym2")]
 position = Vector2(30, -112)
-Model = 2
+Model = 4
 
 [node name="Crt2" parent="." unique_id=1843145343 instance=ExtResource("11_8lym2")]
 position = Vector2(63, 96)
-Model = 2
+Model = 4
 
 [node name="Crt3" parent="." unique_id=1670926361 instance=ExtResource("11_8lym2")]
 position = Vector2(109, 16)
+Model = 4
 
 [node name="Crt4" parent="." unique_id=1631417332 instance=ExtResource("11_8lym2")]
 position = Vector2(-113, 32)
+Model = 4
 
 [node name="TapeLevel" type="Node2D" parent="." unique_id=1569618153]
 
 [node name="VhsTape" parent="TapeLevel" unique_id=1507013503 instance=ExtResource("8_8e8y6")]
 position = Vector2(-184, -27)
+initial_position = Vector2(-184, -27)
 
 [node name="VhsTape2" parent="TapeLevel" unique_id=219384938 instance=ExtResource("8_8e8y6")]
 position = Vector2(176, -124)
+initial_position = Vector2(176, -124)
 
 [node name="VhsTape3" parent="TapeLevel" unique_id=1327628899 instance=ExtResource("8_8e8y6")]
 position = Vector2(-114, 85)
+initial_position = Vector2(-114, 85)
 
 [node name="VhsTape4" parent="TapeLevel" unique_id=1096118480 instance=ExtResource("8_8e8y6")]
 position = Vector2(41, -66)
+initial_position = Vector2(41, -66)
 
 [node name="PlayerLevel" type="Node2D" parent="." unique_id=1354897298]
 
@@ -188,9 +201,3 @@ position = Vector2(-38, 10)
 
 [node name="Escalator6Tiles3" parent="." unique_id=719457396 instance=ExtResource("12_431e7")]
 position = Vector2(-38, -54)
-
-[node name="AutomaticDoor2" parent="." unique_id=274646248 instance=ExtResource("9_hual3")]
-position = Vector2(55, 32)
-
-[node name="AutomaticDoor3" parent="." unique_id=1405825115 instance=ExtResource("9_hual3")]
-position = Vector2(55, 32)

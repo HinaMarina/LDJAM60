@@ -14,10 +14,20 @@ func insert_enemy(target:Vector2,scene:SceneLevel):
 	all_spawned_enemies.append(enemy)
 	enemy_amount+=1
 	enemy.global_position = target
+	#if PlayerStatsManager.stage_cleared:
+		#enemy.die()
+
 
 func clear_all_enemies():
-	print(all_spawned_enemies)
+	#print(all_spawned_enemies)
 	for each in all_spawned_enemies:
 		if each != null:
 			each.Core.die()
 	all_spawned_enemies.clear()
+	#enemy_amount = 0
+
+func _process(delta: float) -> void:
+	#print(enemy_amount)
+	if PlayerStatsManager.stage_cleared && !all_spawned_enemies.is_empty():
+		for each in all_spawned_enemies:
+			each.Core.die()
