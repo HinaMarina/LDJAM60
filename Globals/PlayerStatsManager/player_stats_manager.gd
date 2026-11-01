@@ -19,6 +19,7 @@ var stage_cleared:bool = false
 @onready var Credits:int=0
 @onready var PlayerPoints:int = 0
 @onready var Life_Amount:int = 3
+var just_cleared:bool = false
 
 const initial_life_amount:= 3
 const initial_scene_index:= 0
@@ -52,8 +53,9 @@ func use_credit():
 
 
 func _input(event: InputEvent) -> void:
-	if stage_cleared:
+	if stage_cleared && just_cleared:
 		if Input.is_action_just_pressed('start_game'):
+			just_cleared = false
 			SoundManager.play_bgm(Level_Song)
 			state_clear_animator.play_backwards("Stage_Clear")
 			await state_clear_animator.animation_finished
@@ -126,12 +128,15 @@ func on_player_death(tapes:Array[VHSTape]):
 		#tapes.clear()
 		
 func _process(delta: float) -> void:
+	if just_cleared:
+		EnemyManager.clear_all_enemies()
+
 	#print(EnemyManager.enemy_amount)
 	if current_scene != null:
 		if current_scene.CRT_Amount<=0 && !stage_cleared:
-			EnemyManager.clear_all_enemies()
 			#current_scene.Current_Player.body.maincore.pause_movement()
 			stage_cleared = true
+			just_cleared = true
 			if current_scene_index+1 >=6:
 				state_clear_animator.play("THANKS")
 				return
@@ -160,3 +165,5 @@ func add_life():
 	
 	Life_Amount +=1
 	life_amount_icon.size.x = Life_Amount*life_amount_icon.get_minimum_size().x
+#func _physics_process(delta: float) -> void:
+	##print(stage_cleared)

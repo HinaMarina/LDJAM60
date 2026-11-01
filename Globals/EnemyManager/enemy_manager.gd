@@ -30,4 +30,5 @@ func _process(delta: float) -> void:
 	#print(enemy_amount)
 	if PlayerStatsManager.stage_cleared && !all_spawned_enemies.is_empty():
 		for each in all_spawned_enemies:
-			each.Core.die()
+			if is_instance_valid(each):
+				each.Core.die()
